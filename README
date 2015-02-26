@@ -1,5 +1,5 @@
-<h1>Purdue Web Dev Club Tutorials</h2>
+#Purdue Web Dev Club Tutorials
 
-<h2>Weather</h2>
+##1. Weather
 Using APIs, making requests, parsing responses
-<b>Focus language:</b> Javascript (+jQuery)
+**Focus language:** Javascript (+jQuery)
