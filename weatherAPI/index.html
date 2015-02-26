@@ -12,17 +12,17 @@
   			var stateName = $("#state").val();
   			var cityName = $("#city").val();
 
-  			//var KEY = "GET YOUR OWN KEY AT http://www.wunderground.com/weather/api/d/pricing.html"
-  			$.getJSON("http://api.wunderground.com/api/KEY/conditions/q/"+stateName+"/"+cityName+".json", function(data){
-    			console.log(data);
-    			var city = data.current_observation.display_location.city;
-    			var weather = data.current_observation.weather;
-    			var temperature = data.current_observation.temp_f;
-    			$("#cityName").html(city);
-    			$("#weather").html(weather);
-    			$("#temperature").html(temperature);
-    			$("#progress").css("width",temperature+"%");
-    		});
+  			var key = "GET YOUR OWN KEY AT http://www.wunderground.com/weather/api/d/pricing.html"
+  			$.getJSON("http://api.wunderground.com/api/"+key+"/conditions/q/"+stateName+"/"+cityName+".json", function(data){
+	    			console.log(data);
+	    			var city = data.current_observation.display_location.city;
+	    			var weather = data.current_observation.weather;
+	    			var temperature = data.current_observation.temp_f;
+	    			$("#cityName").html(city);
+	    			$("#weather").html(weather);
+	    			$("#temperature").html(temperature);
+	    			$("#progress").css("width",temperature+"%");
+	    		});
 		});
     });
   </script>
