@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script>
+  	$(document).ready(function(){    
+
+  		$("#check").click(function(){
+
+  			var stateName = $("#state").val();
+  			var cityName = $("#city").val();
+
+  			//var KEY = "GET YOUR OWN KEY AT http://www.wunderground.com/weather/api/d/pricing.html"
+  			$.getJSON("http://api.wunderground.com/api/KEY/conditions/q/"+stateName+"/"+cityName+".json", function(data){
+    			console.log(data);
+    			var city = data.current_observation.display_location.city;
+    			var weather = data.current_observation.weather;
+    			var temperature = data.current_observation.temp_f;
+    			$("#cityName").html(city);
+    			$("#weather").html(weather);
+    			$("#temperature").html(temperature);
+    			$("#progress").css("width",temperature+"%");
+    		});
+		});
+    });
+  </script>
+
+  <style type="text/css">
+  	span{
+  		float: right;
+  	}
+  </style>
+  
+  <title>Weather</title>
+</head>
+<body>
+	State:<input type="text" id="state">
+	<br>
+	City:<input type="text" id="city">
+	<br>
+	<input type="button" id="check" value="Check">
+
+	<br><br>
+	Hello, welcome to The City of
+	<span id="cityName"></span>
+	<br>
+	Current weather: <span id="weather"></span>
+	<br>
+	Temperature: <span id="temperature"></span> degrees F.
+	<br>
+	Enjoy your stay.
+	<br><br><br>
+	Themometer<br><br>
+	<div id="temp">0F <span>100F</span></div>
+	<div class="progress">
+  		<div id="progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+    		<span class="sr-only">45% Complete</span>
+  		</div>
+	</div>
+</body>
+</html>
